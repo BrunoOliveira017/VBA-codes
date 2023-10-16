@@ -1,0 +1,133 @@
+Sub macro()
+Application.ScreenUpdating = False
+
+Sheets("INVENTARIO").Activate
+
+Set Rng = Range("C2")
+
+valor1 = InputBox("Insira o Código de Barras: ")
+qtde1 = InputBox("Insira Código da Caixa: ")
+qtde2 = InputBox("Insira GRAMATURA: ")
+qtde3 = InputBox("Insira Quantidade de Caixas: ")
+
+Do While Rng.Value <> ""
+    Rng.Select
+
+    If StrComp(CStr(Rng.Value), CStr(valor1), vbTextCompare) = 0 Then
+        Rng.Offset(0, 2).Value = qtde1
+        Rng.Offset(0, 3).Value = qtde2
+        Rng.Offset(0, 4).Value = qtde3
+        Exit Do
+    End If
+
+    Set Rng = Rng.Offset(1, 0)
+Loop
+
+If Rng.Value = "" Then
+    MsgBox "Valor não ENCONTRADO!"
+End If
+
+Range("e2").Select
+Application.ScreenUpdating = True
+Range("f2").Select
+Application.ScreenUpdating = True
+Range("g2").Select
+Application.ScreenUpdating = True
+
+End Sub
+Sub macrounidade()
+
+Application.ScreenUpdating = False
+
+Sheets("INVENTARIO").Activate
+
+Set Rng = Range("C2")
+
+valor1 = InputBox("Insira o Código de Barras: ")
+qtde1 = InputBox("Insira UNIDADES: ")
+
+Do While Rng.Value <> ""
+    Rng.Select
+
+    If StrComp(CStr(Rng.Value), CStr(valor1), vbTextCompare) = 0 Then
+        Rng.Offset(0, 1).Value = qtde1
+        Exit Do
+    End If
+
+    Set Rng = Rng.Offset(1, 0)
+Loop
+
+If Rng.Value = "" Then
+    MsgBox "Valor não ENCONTRADO!"
+End If
+
+Range("d2").Select
+Application.ScreenUpdating = True
+
+
+End Sub
+Sub macrocaixa()
+
+Application.ScreenUpdating = False
+
+Sheets("INVENTARIO").Activate
+
+Set Rng = Range("e2")
+
+valor1 = InputBox("Insira o Código de Barras da CAIXA: ")
+qtde3 = InputBox("Insira Quantidade de Caixas: ")
+
+Do While Rng.Value <> ""
+    Rng.Select
+
+    If StrComp(CStr(Rng.Value), CStr(valor1), vbTextCompare) = 0 Then
+        Rng.Offset(0, 2).Value = qtde3
+        Exit Do
+    End If
+
+    Set Rng = Rng.Offset(1, 0)
+Loop
+
+If Rng.Value = "" Then
+    MsgBox "Valor não ENCONTRADO!"
+End If
+
+Range("g2").Select
+Application.ScreenUpdating = True
+
+End Sub
+Sub cadastrocaixa()
+
+Application.ScreenUpdating = False
+
+Sheets("INVENTARIO").Activate
+
+Set Rng = Range("C2")
+
+valor1 = InputBox("Insira o Código de Barras: ")
+qtde1 = InputBox("Insira Código da Caixa: ")
+qtde2 = InputBox("Insira GRAMATURA: ")
+
+Do While Rng.Value <> ""
+    Rng.Select
+
+    If StrComp(CStr(Rng.Value), CStr(valor1), vbTextCompare) = 0 Then
+        Rng.Offset(0, 2).Value = qtde1
+        Rng.Offset(0, 3).Value = qtde2
+        Exit Do
+    End If
+
+    Set Rng = Rng.Offset(1, 0)
+Loop
+
+If Rng.Value = "" Then
+    MsgBox "Valor não ENCONTRADO!"
+End If
+
+Range("e2").Select
+Application.ScreenUpdating = True
+Range("f2").Select
+Application.ScreenUpdating = True
+
+End Sub
+
